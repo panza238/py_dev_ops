@@ -1,5 +1,7 @@
-# py_dev_ops
-Project based on the book Python for DevOps by Alfredo Deza and Noah Gift
+# Python for DevOps
+The idea is to develop a simple project based on the book Python for DevOps by Alfredo Deza and Noah Gift.
+The project will consist of a simple CLI tool that gets the time for any given city. This should provide a simple
+enough platform to build around, using the tools presented in the book.
 
 ## Getting Started
 This project's dependencies are managed through `poetry`.<br>
