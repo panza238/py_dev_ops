@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "py-dev-ops"
+version = "0.1.0"
+description = "Project based on the book Python for DevOps, by A. Deza & N. Gift"
+authors = ["E. Panzarasa <ezequiel.panzarasa@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "py_dev_ops"}]
+
+[tool.poetry.dependencies]
+python = "3.8.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
