@@ -33,7 +33,8 @@ def list_current_location_time():
 @click.option('--cities', '-c', multiple=True,
               help="""Select which cities to get the time for. The format MUST be <continent>/<city>\n
               if more than one city is provided, they must be separated by a space\n
-              examples: America/Buenos_Aires Europe/London""")
+              examples: America/Buenos_Aires Europe/London\n
+              If no cities are provided, the current location's time will be displayed""")
 def world_timer(cities):
     """CLI tool to list the current time in different cities"""
     if not cities:
