@@ -19,3 +19,6 @@ With this in mind, we'll start by creating a simple CLI tool that:
 be able to use the `requests` module and parse the output)*
 
 ### Building the CLI tool
+MINIMAL WORLD TIMER V0 WORKNG!
+TODO:
+- EXPLAIN WORKINGS, FEATURES AND LIMIATIONS (LOGS BASE PATH CONFIG, ONE -c FLAG PER CITY, LOGS HANDLED INEFFICIENTLY)
