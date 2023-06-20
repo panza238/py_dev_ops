@@ -15,3 +15,7 @@ With this in mind, we'll start by creating a simple CLI tool that:
 3. Displays the current time for each city
 4. Logs the information about the requested times to a log file
 
+*(I intentionally decided to use an API to get the times, instead of using a library like `pendulum`, in order to 
+be able to use the `requests` module and parse the output)*
+
+### Building the CLI tool

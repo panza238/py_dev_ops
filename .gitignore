@@ -159,3 +159,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 # yeah... I'm going with the nuclear option
+
+# ignore log files
+/logs

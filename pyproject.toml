@@ -9,6 +9,8 @@ packages = [{include = "py_dev_ops"}]
 
 [tool.poetry.dependencies]
 python = "3.8.10"
+click = "^8.1.3"
+requests = "^2.31.0"
 
 
 [build-system]
