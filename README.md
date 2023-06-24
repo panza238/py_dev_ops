@@ -32,9 +32,11 @@ get to the tool's `help` section, from the project's root path:
 ```bash
 python world_timer/world_timer.py --help
 ```
-5. (OPTIONAL) `poetry` offers another way of running this. Instead of activating the virtual environment through `poetry shell`,
+5. [OPTIONAL] `poetry` offers another way of running this. Instead of activating the virtual environment through `poetry shell`,
 you could run it like this: 
 ```bash
 poetry run python world_timer/world_timer.py --help
 ```
 6. Follow the instructions in the `help` section to use the tool!
+7. [OPTIONAL] Feel free to play around with `wt_argparse.py` and `wt_fire.py`. These scripts implement the same tool
+by using other frameworks (`argparse` and `fire` respectively)
