@@ -52,5 +52,6 @@ thing is that one could pass a list of cities with only one flag in `Click 7.X`.
 - Requests to the API could be parallelized to improve performance. They are handled sequentially now.<br>
 *Spoler alert! We will probably do this later on, when performance benchmarking tools are introduced.*
 - The logs could be handled better:
-  - They could probably be handled better with `logging`. This just gave us the excuse to write files as exposed in the book.
+  - Logs could probably be handled better with `logging`. The current way just gave us the excuse to write files as shown in the book.
+  - Logs should store information when the app fails (`stderr`). Not only on successful executions
   - The logs directory could probably be configured through a config file, rather than having to set the environment variable.
