@@ -40,3 +40,17 @@ poetry run python world_timer/world_timer.py --help
 6. Follow the instructions in the `help` section to use the tool!
 7. [OPTIONAL] Feel free to play around with `wt_argparse.py` and `wt_fire.py`. These scripts implement the same tool
 by using other frameworks (`argparse` and `fire` respectively)
+
+## Utils
+In the `utils` directory, you will find two tools used for load testing: `load_test_ab.py` and `load_test_molotov.py`
+
+**WARNING!** These tools might overload a server if not used correctly. Be careful when choosing the arguments. 
+
+### AB tool
+The `load_test_ab.py` script allows you to run a simple load test by using the `ab` CLI tool. You can run it like this:
+```bash
+python load_test_ab.py --help
+```
+By following the example in the tool's `help` menu, you should be able to run a simple load test.
+
+### Molotov tool

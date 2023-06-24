@@ -86,4 +86,10 @@ Moving away from disk performance, and into disk partitioning, a few tools are s
 They all help with partition managing.
 
 ### Network Utilities
-In this section, two **very** useful tools are displayed: the `ab` CLI tool and the `molotov` Python library.
+In this section, two **very** useful tools are displayed: the `ab` CLI tool and the `molotov` Python library. Two simple
+scripts will be available in the `utils` directory. For information on how to run them, see the Utils section in `README.md`.  
+#### AB (Apache Benchmark)
+The `load_test_ab.py` script was created to demonstrate the `ab` CLI tool. This tool is very simple to use, and usually comes 
+already installed in most Linux (and macOS) distributions. We could have created a bash script to run the exact same things,
+but this gave us the oportunity to use the `subprocess` module, which was introduced in Chapter 3.
+
