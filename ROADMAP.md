@@ -55,3 +55,15 @@ thing is that one could pass a list of cities with only one flag in `Click 7.X`.
   - Logs could probably be handled better with `logging`. The current way just gave us the excuse to write files as shown in the book.
   - Logs should store information when the app fails (`stderr`). Not only on successful executions
   - The logs directory could probably be configured through a config file, rather than having to set the environment variable.
+
+## Chapter 04
+This chapter is called "Useful Linux Utilities". Many diagnostic tools are displayed in this chapter. However, I chose
+to focus mainly on the Python specific ones. These new tools won't add new functionality to our World Timer app, but 
+they are intended to provide complementary information about how the app runs (in terms of performance).
+
+Other things will be introduced in this chapter. We are going to start versioning this repository's releases, and we will
+keep a changelog documenting all the changes between one version and another. For now, the different versions will be
+managed manually by cahnging the `version` attribute in the `pyproject.toml` file
+Also, the main repository's `main` branch will now be protected. So we won't be pushing directly to `main`. Instead, we
+will be pushing our changes to a feature branch, and then merge the feature branch to the `main` branch. (In short, this
+aims to make the workflow more gitflow-friendly)
