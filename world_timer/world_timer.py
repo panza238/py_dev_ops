@@ -8,7 +8,7 @@ import os
 
 
 BASE_API_URL = "http://worldtimeapi.org/api/"
-BASE_WT_LOGS_PATH = os.environ.get("BASE_WT_LOGS_PATH")
+BASE_WT_LOGS_PATH = os.environ.get("BASE_WT_LOGS_PATH", ".")
 
 
 def list_cities_time(cities_list):
