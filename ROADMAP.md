@@ -61,9 +61,29 @@ This chapter is called "Useful Linux Utilities". Many diagnostic tools are displ
 to focus mainly on the Python specific ones. These new tools won't add new functionality to our World Timer app, but 
 they are intended to provide complementary information about how the app runs (in terms of performance).
 
-Other things will be introduced in this chapter. We are going to start versioning this repository's releases, and we will
+Other things will be introduced in this chapter:
+1. We are going to start versioning this repository's releases, and we will
 keep a changelog documenting all the changes between one version and another. For now, the different versions will be
-managed manually by cahnging the `version` attribute in the `pyproject.toml` file
-Also, the main repository's `main` branch will now be protected. So we won't be pushing directly to `main`. Instead, we
+managed manually by cahnging the `version` attribute in the `pyproject.toml` file.
+2. Also, the main repository's `main` branch will now be protected. So we won't be pushing directly to `main`. Instead, we
 will be pushing our changes to a feature branch, and then merge the feature branch to the `main` branch. (In short, this
 aims to make the workflow more gitflow-friendly)
+
+### Disk Utilities
+**Disclaimer! I am not going to dig deep into these tools here! I'll just provide an overview of what the book shows**
+
+In terms of disk performance,
+two commands are mentioned: `dd` and `iostat`. These are somewhat complementary. `dd` is used to transfer (read / write)
+data. `iostat` is used to monitor data transfer. The book makes an important distiction between **throughput** and
+**IOPS**. Throughput is how much data is transferred per unit of time (usually expressed in megabytes per second `MB/s`). 
+IOPS is how many input / output operations are carried out per unit of time (usually expressed in transfers per second `tps`).
+Lastly, in terms of measuring disk performance, the book presents the `fio` tool. To be honest, I have not experimented 
+much wth this tool. It is highly flexible and there are many options to customize stress tests, but this level of control over the
+performance tests comes at a cost: there is a learning curve to `fio`. If this sparked your curiosity, you can find the `fio` documentation
+(which include an examples section) [here](https://fio.readthedocs.io/en/latest/index.html).
+
+Moving away from disk performance, and into disk partitioning, a few tools are shown: `fdisk`, `parted`, `lsblk` and `blkid`.
+They all help with partition managing.
+
+### Network Utilities
+In this section, two **very** useful tools are displayed: the `ab` CLI tool and the `molotov` Python library.
