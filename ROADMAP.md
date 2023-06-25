@@ -87,9 +87,34 @@ They all help with partition managing.
 
 ### Network Utilities
 In this section, two **very** useful tools are displayed: the `ab` CLI tool and the `molotov` Python library. Two simple
-scripts will be available in the `utils` directory. For information on how to run them, see the Utils section in `README.md`.  
+scripts will be available in the `utils` directory. For information on how to run them, see the Utils section in `README.md`.
+
+In the future, we will add complexity to both tools. For now, they serve as a quick introduction.
+
+**WARNING!** These tools might overload a server if not used correctly. Be careful when choosing the arguments. 
+
+**TIP:** you can use `https://example.com/` to test any of these tools
+
 #### AB (Apache Benchmark)
 The `load_test_ab.py` script was created to demonstrate the `ab` CLI tool. This tool is very simple to use, and usually comes 
 already installed in most Linux (and macOS) distributions. We could have created a bash script to run the exact same things,
 but this gave us the oportunity to use the `subprocess` module, which was introduced in Chapter 3.
 
+#### Molotov
+The `load_test_molotov.py` script was created to demonstrate the very basics of the `molotov` Python library. There is 
+much more to it, but this is enough for now. We will explore more of its features in the future.
+
+In this simple example, we wrote 2 tests: one that passes and one that fails. By adjusting the weight parameter on the 
+`scenario` decorator, we can control how many times each scenario is run. In this case, 80 percent of the times the
+`pass` scenario is run and 20 percent of the times the `fail` scenario is run. I have found that capturing the output
+of `molotov` can be a bit difficult. What I have found toto work is to direct de output to a log file.
+
+One final comment on this: if you went through the script, you probably have noticed the `async` keyword being used. 
+This is because `molotov` uses the `asyncio` module to run the tests. This allows the tests to be ran in **multiple threads**.
+I won't dive deep into this topic right now, but we will get there when we start trying to improve the performance of the app.
+
+#### Locust
+There is another Python library for load testing called `locust`. I have not used it, but is seems to be a bit bigger than `molotov`.
+The [GitHub project](https://github.com/locustio/locust) has more recent commits, and many more contributors. 
+So it might be worth checking it out. I might add  it in the future.
+The project's official website can be found [here](https://locust.io).

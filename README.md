@@ -54,3 +54,18 @@ python load_test_ab.py --help
 By following the example in the tool's `help` menu, you should be able to run a simple load test.
 
 ### Molotov tool
+The `load_test_molotov.py` script allows you to run a simple load test by using the `molotov` library. You can run it like this:
+1. Make sure you have the poetry virtual environment activated. You can do this by running `poetry shell`
+2. Run `molotov` like this (assuming you are in the project's root directory):
+```bash
+molotov -d 5 utils/load_test_molotov.py
+```
+This will run the load tests specified in the `utils/load_test_molotov.py` script for 5 seconds. The current tests 
+are designed to fail about 20% of the time, so expect a few failures.
+3. [OPTIONAL] I have found it difficult to capture the output of the tool. What worked best for me was to direct the
+the output to a log file like this:
+```bash
+molotov -d 5 utils/load_test_molotov.py > <path_to_log_file>
+```
+`molotov` has many CLI options you can play around. 
+[Here's a link to the documentation](https://molotov.readthedocs.io/en/stable/cli/) describing what each of them does.  
