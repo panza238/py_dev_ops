@@ -133,4 +133,12 @@ Every time a new Python shell is spawned, everything in this file will be import
 functions or methods you want to have available in every shell.<br>
 The only thing one has to do in order to use the script is to set the `PYTHONSTARTUP` environment variable.
 
-_We are setting more environment variables... it might make sense to handle them through a single file in the future..._
+_We are setting more environment variables... it might make sense to start handling them through a single file..._
+
+### DEBUGGING
+The book mentions `pdb` as a tool to debug Python code. It is a very simple, yet powerful tool. You won't see much of
+it in this project because I plan on committing only working code. But you can find an example  in `utils/pdb_example.py`.
+Being able to debug code quickly is a great skill to have. I highly encouraged you to start using `pdb` as a debugging
+tool. [Here](https://realpython.com/python-debugging-pdb/) you can find a good RealPython post on how to get started.
+
+
