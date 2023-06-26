@@ -19,7 +19,6 @@ Why google the local time of a city when you can use this tool?
 (yes... that is suposed to be read with a hint of irony)
 
 ### Usage
-
 1. Install the project with `poetry` (see *Getting Started* section above)
 2. Define where you want to keep the logs by setting the environment variable `BASE_WT_LOGS_PATH` like so:
 ```bash
@@ -69,3 +68,11 @@ molotov -d 5 utils/load_test_molotov.py > <path_to_log_file>
 ```
 `molotov` has many CLI options you can play around. 
 [Here's a link to the documentation](https://molotov.readthedocs.io/en/stable/cli/) describing what each of them does.  
+
+## PYTHONSTARTUP
+The aim of this section is to customize the Python shell.
+To make the functions and methods defined in `utils/python_startup.py` available in every Python REPL, you must first
+set the `PYTHONSTARTUP` environment variable like this (assuming you are in the project's root directory):
+```bash
+export PYTHONSTARTUP=./utils/python_startup.py
+```

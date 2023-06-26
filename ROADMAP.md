@@ -118,3 +118,19 @@ There is another Python library for load testing called `locust`. I have not use
 The [GitHub project](https://github.com/locustio/locust) has more recent commits, and many more contributors. 
 So it might be worth checking it out. I might add  it in the future.
 The project's official website can be found [here](https://locust.io).
+
+### CPU Utilities
+Not much to say about this section. The book mentions `top`, `htop` and `ps` as useful tools for monitoring CPU usage
+(and other resources).
+
+### Shell customization
+The section provides lots of information about how to customize the shell (bash, zsh, etc.) through the _dotfiles_.<br>
+Also, it provides a way to customize the Python shell or REPL.
+
+#### PYTHONSTARTUP
+In the `utils` directory, we have a file called `python_startup.py`. This file is used to customize the Python shell.
+Every time a new Python shell is spawned, everything in this file will be imported. This is useful in case there are
+functions or methods you want to have available in every shell.<br>
+The only thing one has to do in order to use the script is to set the `PYTHONSTARTUP` environment variable.
+
+_We are setting more environment variables... it might make sense to handle them through a single file in the future..._
