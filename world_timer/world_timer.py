@@ -29,12 +29,6 @@ def list_current_location_time():
     click.echo(click.style(f"{response['timezone'].split('/')[-1]}: {response['datetime']}", fg='green'))
 
 
-@click.command()
-@click.option('--cities', '-c', multiple=True,
-              help="""Select which cities to get the time for. The format MUST be <continent>/<city>\n
-              if more than one city is provided, each city must be preceded by the --cities or -c flag\n
-              example: -c America/Buenos_Aires -c Europe/London\n
-              If no cities are provided, the current location's time will be displayed""")
 def world_timer(cities):
     """CLI tool to list the current time in different cities"""
     if not cities:
@@ -48,5 +42,16 @@ def world_timer(cities):
         log_file.write(f"[{now}] Consulted Cities: {cities}\n")
 
 
+@click.command()
+@click.option('--cities', '-c', multiple=True,
+              help="""Select which cities to get the time for. The format MUST be <continent>/<city>\n
+              if more than one city is provided, each city must be preceded by the --cities or -c flag\n
+              example: -c America/Buenos_Aires -c Europe/London\n
+              If no cities are provided, the current location's time will be displayed""")
+def world_timer_command(cities):
+    """CLI tool to list the current time in different cities"""
+    world_timer(cities)
+
+
 if __name__ == "__main__":
-    world_timer()
+    world_timer_command()
