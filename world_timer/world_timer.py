@@ -22,25 +22,36 @@ def list_cities_time(cities_list):
 def list_current_location_time():
     """list current location time"""
     base_url = BASE_API_URL + "/ip"
-
-    response = requests.get(base_url).json()
+    response = [requests.get(base_url).json()]
+    # return list for consistency with list_cities_time
     return response
 
 
-def world_timer(cities, verbose=False):
+def print_location_time(response):
+    """print location time"""
+    click.echo(click.style(f"{response['timezone'].split('/')[-1]}: {response['datetime']}",
+                           fg="green"))
+
+
+def world_timer(cities, quiet=False):
     """CLI tool to list the current time in different cities"""
+
+    # if no cities provided, use current location
     if not cities:
-        response = list_current_location_time()
-        if verbose:
-            click.echo("No cities provided. Using current location")
-            click.echo(click.style(f"{response['timezone'].split('/')[-1]}: {response['datetime']}", fg='green'))
+        click.echo("No cities provided. Using current location")
+        responses = list_current_location_time()
     else:
         responses = list_cities_time(cities_list=cities)
-        if verbose:
-            for response in responses:
-                click.echo(click.style(f"{response['timezone'].split('/')[-1]}: {response['datetime']}", fg='green'))
-            
 
+    # If quiet, suppress output to console.
+    if quiet:
+        pass
+    else:
+        for response in responses:
+            print_location_time(response)
+
+            
+    # Log consulted cities
     today = datetime.datetime.today().date().isoformat()
     with open(f"{BASE_WT_LOGS_PATH}/log_file_{today}.log", "a") as log_file:
         now = datetime.datetime.now().isoformat()
@@ -53,10 +64,10 @@ def world_timer(cities, verbose=False):
               if more than one city is provided, each city must be preceded by the --cities or -c flag\n
               example: -c America/Buenos_Aires -c Europe/London\n
               If no cities are provided, the current location's time will be displayed""")
-@click.option("--verbose", "-v", is_flag=True, default=False, help="Enable verbose output")
-def world_timer_command(cities, verbose):
+@click.option("--quiet", "-q", is_flag=True, default=False, help="quiet mode. Supress output to console")
+def world_timer_command(cities, quiet):
     """CLI tool to list the current time in different cities"""
-    world_timer(cities, verbose)
+    world_timer(cities, quiet)
 
 
 if __name__ == "__main__":
