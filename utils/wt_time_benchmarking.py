@@ -4,9 +4,17 @@ Simple tool to measure the execution time of the world timer function
 import timeit
 import statistics
 import sys
+import os
+
+
+# Get the parent directory of the current script
+parent_dir = os.path.dirname(os.path.abspath(__file__))
+# Get the parent of the parent directory
+grandparent_dir = os.path.dirname(parent_dir)
+# Add the grandparent directory to sys.path
+sys.path.append(grandparent_dir)
 
 # This is not the best naming convention
-sys.path.append("/Users/ezequiel.panzarasa/Desktop/Panza/Repos/py_dev_ops")  # PATCH. Just for now
 from world_timer.world_timer import world_timer
 
 # Encapsulate all of this in a function to run from main
