@@ -23,7 +23,7 @@ def wt_timing():
     # 1 - SETUP
     cities = ['America/Buenos_Aires', 'Europe/London', 'America/Lima', 'America/Los_Angeles', 'Europe/Paris']
     # 2 - EXECUTE
-    results = timeit.repeat(lambda: world_timer(cities), repeat=5, number=10)
+    results = timeit.repeat(lambda: world_timer(cities, quiet=True), repeat=5, number=10)
     # 3 - PRINT
     print(f"Mean: {round(statistics.mean(results), 3)} seconds, Standard Deviation: {round(statistics.stdev(results), 3)} seconds\n")
 
