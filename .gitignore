@@ -162,3 +162,7 @@ cython_debug/
 
 # ignore log files
 /logs
+# ignore ideas file
+future_ideas.txt
+# ignore vscode
+.vscode

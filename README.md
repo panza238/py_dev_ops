@@ -19,7 +19,6 @@ Why google the local time of a city when you can use this tool?
 (yes... that is suposed to be read with a hint of irony)
 
 ### Usage
-
 1. Install the project with `poetry` (see *Getting Started* section above)
 2. Define where you want to keep the logs by setting the environment variable `BASE_WT_LOGS_PATH` like so:
 ```bash
@@ -40,3 +39,50 @@ poetry run python world_timer/world_timer.py --help
 6. Follow the instructions in the `help` section to use the tool!
 7. [OPTIONAL] Feel free to play around with `wt_argparse.py` and `wt_fire.py`. These scripts implement the same tool
 by using other frameworks (`argparse` and `fire` respectively)
+
+## Utils
+In the `utils` directory, you will find two tools used for load testing: `load_test_ab.py` and `load_test_molotov.py`
+
+**WARNING!** These tools might overload a server if not used correctly. Be careful when choosing the arguments. 
+
+### AB tool
+The `load_test_ab.py` script allows you to run a simple load test by using the `ab` CLI tool. You can run it like this:
+```bash
+python load_test_ab.py --help
+```
+By following the example in the tool's `help` menu, you should be able to run a simple load test.
+
+### Molotov tool
+The `load_test_molotov.py` script allows you to run a simple load test by using the `molotov` library. You can run it like this:
+1. Make sure you have the poetry virtual environment activated. You can do this by running `poetry shell`
+2. Run `molotov` like this (assuming you are in the project's root directory):
+```bash
+molotov -d 5 utils/load_test_molotov.py
+```
+This will run the load tests specified in the `utils/load_test_molotov.py` script for 5 seconds. The current tests 
+are designed to fail about 20% of the time, so expect a few failures.
+3. [OPTIONAL] I have found it difficult to capture the output of the tool. What worked best for me was to direct the
+the output to a log file like this:
+```bash
+molotov -d 5 utils/load_test_molotov.py > <path_to_log_file>
+```
+`molotov` has many CLI options you can play around. 
+[Here's a link to the documentation](https://molotov.readthedocs.io/en/stable/cli/) describing what each of them does.
+
+
+### Time benchmarking
+IN the utils directory, you will find a script called `wt_time_benchmarking.py`. This script allows you to run
+a simple performance test. This tool is based on the Python `timeit` module.<br>
+**How to run:**
+1. Make sure you have the poetry virtual environment activated. You can do this by running `poetry shell`
+2. run `python utils/wt_time_benchmarking.py`
+
+## PYTHONSTARTUP
+The aim of this section is to customize the Python shell.
+To make the functions and methods defined in `utils/python_startup.py` available in every Python REPL, you must first
+set the `PYTHONSTARTUP` environment variable like this (assuming you are in the project's root directory):
+```bash
+export PYTHONSTARTUP=./utils/python_startup.py
+```
+
+

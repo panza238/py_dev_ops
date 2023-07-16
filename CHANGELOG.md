@@ -1,0 +1,4 @@
+# Changelog
+
+## Version [0.1.0]
+INITIAL RELEASE. BASIC WORLD-TIMER APP (CLI TOOL)
