@@ -163,3 +163,22 @@ print(times)
 This code means that my_function will be run a total of 50 times. The `times` variable, the return value of the `timeit.repeat` function, will be a list 5 values. Each of these 5 values corresponds to 10 runs of `my_function`. So, if the first value is 20, that means that 10 runs of `my_function` took roughly 20 seconds. Averaging this, we get a value of 2 seconds per run.
 
 In the future, we will be adding a load testing tool to benchmark our application. Right now, we won't because we don't want to overload the server of an API we don't own (or have permission to abuse).
+
+
+## Chapter 05
+This chapter focuses on packaging and software distribution.
+
+### Native Python packaging
+For native Python packaging, we will leverage the `setuptools` library. This library does most of the heavy lifting for us.
+
+To create a package from our module, one has to create a `setup.py` file in the root directory of the project. Once the file is created, we can run `python setup.py sdist`, which will create a `tar.gz` file. This file *is* the package. The `tar.gz` file can be installed through `pip`.
+After running `python setup.py sdist` you will notice a few newly created directories. Feel free to explore them. The one that is important to us is `dist`. Inside this directory, we will find the `.tar.gz` file.
+You can try it out by creating a new empty virtual environment, and running `pip install <path/to/file>.tar.gz`.
+Alternatively, you can use `python setup.py install` to install the package (but you will need access to `setup.py` file).
+One thing to watch out for, in this basic use case, are dependencies. You might successfully install the package, but the app won't run, or it will run into errors due to missing packages in the new virtual environment.
+
+### PyPI
+
+TODO:
+- Debug pip installation... Why is it failing? Try re-packaging it
+- How to upload the package to PyPI.
