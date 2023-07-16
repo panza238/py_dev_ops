@@ -31,9 +31,16 @@ def wt_timing():
     # 1 - SETUP
     cities = ['America/Buenos_Aires', 'Europe/London', 'America/Lima', 'America/Los_Angeles', 'Europe/Paris']
     # 2 - EXECUTE
-    results = timeit.repeat(lambda: world_timer(cities, quiet=True), repeat=5, number=10)
+    repeat = 5
+    number = 10
+    print(f"Running the statement with parameters: repeat={repeat}, number={number}. The statemet will be run a total of {repeat * number} times.\n",
+          f"Number of cities: {len(cities)}. The API will be called {len(cities)} times per run. Total API calls: {len(cities) * repeat * number}\n",
+          end="\n\n")
+    results = timeit.repeat(lambda: world_timer(cities, quiet=True), repeat=repeat, number=number)
     # 3 - PRINT
-    print(f"Mean: {round(statistics.mean(results), 3)} seconds, Standard Deviation: {round(statistics.stdev(results), 3)} seconds\n")
+    print(f"Showing aggregate results for {number} runs. The mean represents the average execution time of {number} runs.\n")
+    print(f"Mean: {round(statistics.mean(results), 3)} seconds, Standard Deviation: {round(statistics.stdev(results), 3)} seconds\n",
+          end="\n\n")
 
 
 if __name__ == "__main__":

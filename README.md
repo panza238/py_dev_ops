@@ -67,7 +67,15 @@ the output to a log file like this:
 molotov -d 5 utils/load_test_molotov.py > <path_to_log_file>
 ```
 `molotov` has many CLI options you can play around. 
-[Here's a link to the documentation](https://molotov.readthedocs.io/en/stable/cli/) describing what each of them does.  
+[Here's a link to the documentation](https://molotov.readthedocs.io/en/stable/cli/) describing what each of them does.
+
+
+### Time benchmarking
+IN the utils directory, you will find a script called `wt_time_benchmarking.py`. This script allows you to run
+a simple performance test. This tool is based on the Python `timeit` module.<br>
+**How to run:**
+1. Make sure you have the poetry virtual environment activated. You can do this by running `poetry shell`
+2. run `python utils/wt_time_benchmarking.py`
 
 ## PYTHONSTARTUP
 The aim of this section is to customize the Python shell.
@@ -76,3 +84,5 @@ set the `PYTHONSTARTUP` environment variable like this (assuming you are in the 
 ```bash
 export PYTHONSTARTUP=./utils/python_startup.py
 ```
+
+

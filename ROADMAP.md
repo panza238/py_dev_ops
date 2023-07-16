@@ -141,11 +141,22 @@ it in this project because I plan on committing only working code. But you can f
 Being able to debug code quickly is a great skill to have. I highly encouraged you to start using `pdb` as a debugging
 tool. [Here](https://realpython.com/python-debugging-pdb/) you can find a good RealPython post on how to get started.
 
-TODO:
-- improve `utils/wt_time_benchmarking.py`. 
-  - Resolve import issues (remove `sys.path.append`)
-  - "in the future, we will also include load tests as another benchmarking tool. Right now, we won't because we don't 
-  want to overload the server of an API we don't own (or have permission to abuse)."
-- READ about the number and the repeat arguments used in `timeit.repeat` function. Explain in the docs how many times does the function 
-run and how many times it calls the API.
-  - What does the mean and the standard deviation mean? Is that number for the whole function (5 requests)? Or is it for the whole function several times?
+
+### BENCHMARKING
+We will be using `timeit` as a benchmarking tool. This tools allows us to measure the performance of our app in terms of how long it takes to run. This goes without saying, but, when using `timeit`, you should compare results that have run on the same infrastructure (e.g. on the same machine or server).
+To measure performace, we will be using the `timeit.repeat` function. The two most important parameters of this function are `repeat` and `number`. `repeat` is the number of benchmarking tests to run, and `number` is the number of times the code is run per test. A simple example makes this a lot clearer.<br>
+**Example:**
+```python
+import timeit
+
+def my_function():
+    # code to be timed
+
+stmt = "my_function()"  # statement to be timed
+
+times = timeit.repeat(stmt=stmt,  repeat=5, number=10)
+print(times)
+```
+This code means that my_function will be run a total of 50 times. The `times` variable, the return value of the `timeit.repeat` function, will be a list 5 values. Each of these 5 values corresponds to 10 runs of `my_function`. So, if the first value is 20, that means that 10 runs of `my_function` took roughly 20 seconds. Averaging this, we get a value of 2 seconds per run.
+
+In the future, we will be adding a load testing tool to benchmark our application. Right now, we won't because we don't want to overload the server of an API we don't own (or have permission to abuse).
