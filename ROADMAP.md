@@ -141,6 +141,9 @@ it in this project because I plan on committing only working code. But you can f
 Being able to debug code quickly is a great skill to have. I highly encouraged you to start using `pdb` as a debugging
 tool. [Here](https://realpython.com/python-debugging-pdb/) you can find a good RealPython post on how to get started.
 
+#### strace
+The book also mentions `strace` as a debugging tool. I have not included much information about this tool, since it is only avalibable on Linux. If you are working on a machine with Linux, it is worth to check out `strace`.
+
 
 ### BENCHMARKING
 We will be using `timeit` as a benchmarking tool. This tools allows us to measure the performance of our app in terms of how long it takes to run. This goes without saying, but, when using `timeit`, you should compare results that have run on the same infrastructure (e.g. on the same machine or server).
