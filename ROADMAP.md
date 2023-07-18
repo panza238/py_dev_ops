@@ -177,8 +177,12 @@ You can try it out by creating a new empty virtual environment, and running `pip
 Alternatively, you can use `python setup.py install` to install the package (but you will need access to `setup.py` file).
 One thing to watch out for, in this basic use case, are dependencies. You might successfully install the package, but the app won't run, or it will run into errors due to missing packages in the new virtual environment.
 
+If you are using `poetry` (as I am) to manage project dependencies, you might run into some trouble when trying to package the module. Modifying the `pyproject.toml` file worked for me. I had to:
+1. Remove the line containing `packages = [{include = "project-name"}]`
+2. Rename the poetry project to `name = "world-timer"`, and then reinstall the poetry project (by running `poetry install`).
+
+
 ### PyPI
 
 TODO:
-- Debug pip installation... Why is it failing? Try re-packaging it
 - How to upload the package to PyPI.
