@@ -183,6 +183,17 @@ If you are using `poetry` (as I am) to manage project dependencies, you might ru
 
 
 ### PyPI
+The Python Package Index (PyPI) is a repository of Python software that allows users to host Python packages and also install from it. This means that you can upload your packages, and then install them somewhere else (as long as you have an internet connection).
 
-TODO:
-- How to upload the package to PyPI.
+`twine` makes uploading pakcages a lot easier. You can upload a package to the test PyPI repository by running `twine upload --repository testpypi ./dist/*`. For this, you will need to create an ccount on test PyPI, generate a token, and create a config `.pypirc` file. [The test PyPI website](https://test.pypi.org/) will show you the steps to generate the token and config file.
+
+In my case, I was able to install the pakcage I uploaded by running `pip install --no-deps --index-url https://test.pypi.org/simple/ world-timer`. I had to use the `--no-deps` flag because I kept running into dependency errors. They can be sorted out by being a bit tidier about the packaging process. For right now, I'll call it "good enough".
+
+To be able to push to the actual PyPI repository, you will need a bit more leg-work (Description, Licenses, and other files). There are many articles about how to get a package ready for PyPI. Feel free to browse around!
+
+## Debian & RPM packaging
+I'm skipping over this section... I am not so interested in this type of package distribution right now.
+
+
+## systemd
+TODO: write about `systemd`.
