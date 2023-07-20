@@ -26,15 +26,15 @@ export BASE_WT_LOGS_PATH=<path to your logs directory>
 ```
 *If you ommit this step, the current working directory will be used to store logs*
 3. run `poetry shell` to activate the virtual environment provided by poetry
-4. run the `world_timer.py` script in the `world_timer` directory. Here's an example of how to run the script to
+4. run the `main.py` script in the `world_timer` directory. Here's an example of how to run the script to
 get to the tool's `help` section, from the project's root path:
 ```bash
-python world_timer/world_timer.py --help
+python world_timer/main.py --help
 ```
 5. [OPTIONAL] `poetry` offers another way of running this. Instead of activating the virtual environment through `poetry shell`,
 you could run it like this: 
 ```bash
-poetry run python world_timer/world_timer.py --help
+poetry run python world_timer/main.py --help
 ```
 6. Follow the instructions in the `help` section to use the tool!
 7. [OPTIONAL] Feel free to play around with `wt_argparse.py` and `wt_fire.py`. These scripts implement the same tool

@@ -163,3 +163,48 @@ print(times)
 This code means that my_function will be run a total of 50 times. The `times` variable, the return value of the `timeit.repeat` function, will be a list 5 values. Each of these 5 values corresponds to 10 runs of `my_function`. So, if the first value is 20, that means that 10 runs of `my_function` took roughly 20 seconds. Averaging this, we get a value of 2 seconds per run.
 
 In the future, we will be adding a load testing tool to benchmark our application. Right now, we won't because we don't want to overload the server of an API we don't own (or have permission to abuse).
+
+
+## Chapter 05
+This chapter focuses on packaging and software distribution.
+
+### Native Python packaging
+For native Python packaging, we will leverage the `setuptools` library. This library does most of the heavy lifting for us.
+
+To create a package from our module, one has to create a `setup.py` file in the root directory of the project. Once the file is created, we can run `python setup.py sdist`, which will create a `tar.gz` file. This file *is* the package. The `tar.gz` file can be installed through `pip`.
+After running `python setup.py sdist` you will notice a few newly created directories. Feel free to explore them. The one that is important to us is `dist`. Inside this directory, we will find the `.tar.gz` file.
+You can try it out by creating a new empty virtual environment, and running `pip install <path/to/file>.tar.gz`.
+Alternatively, you can use `python setup.py install` to install the package (but you will need access to `setup.py` file).
+One thing to watch out for, in this basic use case, are dependencies. You might successfully install the package, but the app won't run, or it will run into errors due to missing packages in the new virtual environment.
+
+If you are using `poetry` (as I am) to manage project dependencies, you might run into some trouble when trying to package the module. Modifying the `pyproject.toml` file worked for me. I had to:
+1. Remove the line containing `packages = [{include = "project-name"}]`
+2. Rename the poetry project to `name = "world-timer"`, and then reinstall the poetry project (by running `poetry install`).
+
+
+### PyPI
+The Python Package Index (PyPI) is a repository of Python software that allows users to host Python packages and also install from it. This means that you can upload your packages, and then install them somewhere else (as long as you have an internet connection).
+
+`twine` makes uploading pakcages a lot easier. You can upload a package to the test PyPI repository by running `twine upload --repository testpypi ./dist/*`. For this, you will need to create an ccount on test PyPI, generate a token, and create a config `.pypirc` file. [The test PyPI website](https://test.pypi.org/) will show you the steps to generate the token and config file.
+
+In my case, I was able to install the pakcage I uploaded by running `pip install --no-deps --index-url https://test.pypi.org/simple/ world-timer`. I had to use the `--no-deps` flag because I kept running into dependency errors. They can be sorted out by being a bit tidier about the packaging process. For right now, I'll call it "good enough".
+
+To be able to push to the actual PyPI repository, you will need a bit more leg-work (Description, Licenses, and other files). There are many articles about how to get a package ready for PyPI. Feel free to browse around!
+
+## Debian & RPM packaging
+I'm skipping over this section... I am not so interested in this type of package distribution right now.
+
+
+## systemd
+Since I am running a machine with macOS, I will not be using `systemd`. Instead, I will be working with the `launchd` tool (which is kind of like `systemd` for macOS). I will be using `launchctl` to interact with `launchd`.<br>
+
+Just as a proof of concept, I have created an automated process that prints "hello from launchctl" every 5 seconds. You will find the `.plist` file in the `misc` directory. In this file, the process' config is defined.
+To run it, you will have to:
+- Replace PATH_TO_PYTHON with the actual path to the Python binary you are using
+- Replace PATH_TO_REPO with the path to the repository
+- run `launchctl load misc/world-timer.plist` (This "turns on" the process)
+
+You should see the output in a file called `launctl_log.log`. <br>
+To stop the process, run `launchctl unload misc/world-timer.plist`.
+
+Feel free to play around with it!

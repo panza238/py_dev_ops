@@ -15,7 +15,7 @@ grandparent_dir = os.path.dirname(parent_dir)
 sys.path.append(grandparent_dir)
 
 # This is not the best naming convention
-from world_timer.world_timer import world_timer
+from world_timer.main import world_timer
 
 # Encapsulate all of this in a function to run from main
 
