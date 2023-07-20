@@ -196,4 +196,15 @@ I'm skipping over this section... I am not so interested in this type of package
 
 
 ## systemd
-TODO: write about `systemd`.
+Since I am running a machine with macOS, I will not be using `systemd`. Instead, I will be working with the `launchd` tool (which is kind of like `systemd` for macOS). I will be using `launchctl` to interact with `launchd`.<br>
+
+Just as a proof of concept, I have created an automated process that prints "hello from launchctl" every 5 seconds. You will find the `.plist` file in the `misc` directory. In this file, the process' config is defined.
+To run it, you will have to:
+- Replace PATH_TO_PYTHON with the actual path to the Python binary you are using
+- Replace PATH_TO_REPO with the path to the repository
+- run `launchctl load misc/world-timer.plist` (This "turns on" the process)
+
+You should see the output in a file called `launctl_log.log`. <br>
+To stop the process, run `launchctl unload misc/world-timer.plist`.
+
+Feel free to play around with it!

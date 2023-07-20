@@ -6,11 +6,11 @@
     <string>world.timer</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/ezequiel.panzarasa/Library/Caches/pypoetry/virtualenvs/world-timer-YsH4YiOQ-py3.8/bin/python</string>
-        <string>/Users/ezequiel.panzarasa/Desktop/Panza/Repos/py_dev_ops/misc/hello.py</string>
+        <string>PATH_TO_PYTHON/bin/python</string>
+        <string>PATH_TO_REPO/py_dev_ops/misc/hello.py</string>
     </array>
     <key>WorkingDirectory</key>
-    <string>/Users/ezequiel.panzarasa/Desktop/Panza/Repos/py_dev_ops</string>    
+    <string>PATH_TO_REPO/py_dev_ops</string>    
     <key>StartInterval</key>
     <integer>5</integer>
     <key>StandardOutPath</key>
