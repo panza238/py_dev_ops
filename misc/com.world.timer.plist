@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>world.timer</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/ezequiel.panzarasa/Library/Caches/pypoetry/virtualenvs/world-timer-YsH4YiOQ-py3.8/bin/python</string>
+        <string>/Users/ezequiel.panzarasa/Desktop/Panza/Repos/py_dev_ops/misc/hello.py</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/ezequiel.panzarasa/Desktop/Panza/Repos/py_dev_ops</string>    
+    <key>StartInterval</key>
+    <integer>5</integer>
+    <key>StandardOutPath</key>
+    <string>./launctl_log.log</string>
+    <key>StandardErrorPath</key>
+    <string>./launctl_err.log</string>    
+</dict>
+</plist>
