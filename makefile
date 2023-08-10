@@ -2,7 +2,7 @@
 .ONESHELL:
 .PHONY: clean run clean logs_setup
 
-all: logs_setup run clean
+all: run clean
 
 poetry.lock:
 	poetry install
