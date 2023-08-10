@@ -1,6 +1,7 @@
+SHELL=/bin/zsh
 
 .ONESHELL:
-.PHONY: clean run clean logs_setup
+.PHONY: clean run logs_setup
 
 all: run clean
 
@@ -10,13 +11,9 @@ poetry.lock:
 logs_setup:
 	mkdir -p logs
 
-poetry_env: poetry.lock
-	poetry shell
-
-run: logs_setup poetry_env
+run: logs_setup poetry.lock
 	export BASE_WT_LOGS_PATH=$(shell pwd)/logs
-	python world_timer/main.py 
+	poetry run python world_timer/main.py 
 
-clean: poetry_env
+clean: 
 	rm -rf __pycache__
-	$(shell deactivate)
