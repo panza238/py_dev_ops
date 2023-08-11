@@ -55,7 +55,10 @@ def world_timer(cities, quiet=False):
     today = datetime.datetime.today().date().isoformat()
     with open(f"{BASE_WT_LOGS_PATH}/log_file_{today}.log", "a") as log_file:
         now = datetime.datetime.now().isoformat()
-        log_file.write(f"[{now}] Consulted Cities: {cities}\n")
+        if not cities:
+            log_file.write(f"[{now}] No cities provided. Using current location\n")
+        else:
+            log_file.write(f"[{now}] Consulted Cities: {cities}\n")
 
 
 @click.command()

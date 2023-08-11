@@ -1,5 +1,12 @@
 # Changelog
 
+## Version [0.3.0]
+### Added
+- `setup.py` file to help with project packaging.
+- `makefile`
+- `launchd` example in `misc` directory. 
+
+
 ## Version [0.2.0]
 ### Changed
 - Renamed the file `world_timer.py` to `main.py` to improve readability and avoid ambiguity.
