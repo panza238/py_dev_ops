@@ -88,3 +88,12 @@ export PYTHONSTARTUP=./utils/python_startup.py
 ```
 
 
+## Makefile 
+In the `makefile` there are a few useful recipes. 
+If you are running this on a MacOS system, I recommend you use `gmake` instead of `make`. (`gmake` can be installed with `homebrew`)
+**How to run:**
+```bash
+gmake <target>
+```
+See makefile for available targets.
+if no target is specified, the default target is `all`.

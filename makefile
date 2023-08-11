@@ -19,6 +19,6 @@ run: logs_setup poetry.lock
 clean: 
 	rm -rf __pycache__
 
-# build source distribution 
+# build package source distribution 
 dist/*.tar.gz: setup.py world_timer/main.py
 	python setup.py sdist

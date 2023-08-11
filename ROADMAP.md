@@ -227,6 +227,9 @@ In this case, I created a very simple makefile. Each *target* groups a series of
 - logs_setup: creates logs directory
 - run: runs the app
 - clean: removes `__pycache__` files
+- dist/*.tar.gz: builds the packages source distribution
+
+With `poetry.lock` and `dist/*.tar.gz` the real power of make is shown. make will track these files and run **only** when the files needed to produce them (provided as dependencies) are modified. Try running `gmake dist/*.tar.gz` twice to see the effect!
 
 ### Cloud Computing
 - AWS Code Pipeline for deploy? Or GCP Cloud Build?
