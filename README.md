@@ -26,6 +26,7 @@ export BASE_WT_LOGS_PATH=<path to your logs directory>
 ```
 *If you ommit this step, the current working directory will be used to store logs*
 3. run `poetry shell` to activate the virtual environment provided by poetry
+    *(`poetry shell` actually spawns a **new** shell withinh the virtual environment. A subtle, but sometimes important, difference)*
 4. run the `main.py` script in the `world_timer` directory. Here's an example of how to run the script to
 get to the tool's `help` section, from the project's root path:
 ```bash
@@ -75,6 +76,7 @@ IN the utils directory, you will find a script called `wt_time_benchmarking.py`.
 a simple performance test. This tool is based on the Python `timeit` module.<br>
 **How to run:**
 1. Make sure you have the poetry virtual environment activated. You can do this by running `poetry shell`
+    *(`poetry shell` actually spawns a **new** shell withinh the virtual environment. A subtle, but sometimes important, difference)*
 2. run `python utils/wt_time_benchmarking.py`
 
 ## PYTHONSTARTUP

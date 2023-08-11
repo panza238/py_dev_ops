@@ -1,5 +1,6 @@
 SHELL=/bin/zsh
 
+# .ONESHELL only works when running gmake. make will ignore it.
 .ONESHELL:
 .PHONY: clean run logs_setup
 
@@ -17,3 +18,7 @@ run: logs_setup poetry.lock
 
 clean: 
 	rm -rf __pycache__
+
+# build source distribution 
+dist/*.tar.gz: setup.py world_timer/main.py
+	python setup.py sdist

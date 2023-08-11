@@ -208,3 +208,30 @@ You should see the output in a file called `launctl_log.log`. <br>
 To stop the process, run `launchctl unload misc/world-timer.plist`.
 
 Feel free to play around with it!
+
+
+## Chapter 06
+This chapter goes over CI/CD: Continuous Integration and Continuous Delivery.
+
+### CI / CD Responsibilities:
+Responsibilities of each part of the CI and CD process:
+- Dibujo del primer párrafo. ¿Cuáles son las responsabilidades del CI y CD?
+  
+### Makefile
+A makefile is a file that contains instructions to achieve a specific goal. This is a fairly general description of what a makefile is, but it is a good place to start. Makefiles are very versatile tools, and can be used for a wide variety of purposes.
+They are more frequently used in compiled languages (such as C os C++) than in interpreted languages (such as Python). However, makefiles can almost always be leveraged. [Here](https://makefiletutorial.com/) you can find a great tutorial.
+**Since I am working on MacOS, I will be using `gmake` instead of `make` as my make tool.**
+In this case, I created a very simple makefile. Each *target* groups a series of commands to be executed. In this case, I have created the following targets:
+
+- poetry.lock: installs poetry project and creates `.lock` file
+- logs_setup: creates logs directory
+- run: runs the app
+- clean: removes `__pycache__` files
+
+### Cloud Computing
+- AWS Code Pipeline for deploy? Or GCP Cloud Build?
+
+  
+
+OK... so... apart from the Makefile, there is not really much to do... There are a few stories and walkthroughs, but nothing to actually do. The chapter goes through tools that will be covered in later chapters (Cloud computing, orchestration, containers, etc.). 
+For now, we will move forward, and focus on CI/CD as a good practice later on, once we have covered those chapters.
