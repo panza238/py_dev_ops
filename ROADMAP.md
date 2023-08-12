@@ -234,7 +234,22 @@ With `poetry.lock` and `dist/*.tar.gz` the real power of make is shown. make wil
 ### Cloud Computing
 - AWS Code Pipeline for deploy? Or GCP Cloud Build?
 
-  
 
-OK... so... apart from the Makefile, there is not really much to do... There are a few stories and walkthroughs, but nothing to actually do. The chapter goes through tools that will be covered in later chapters (Cloud computing, orchestration, containers, etc.). 
-For now, we will move forward, and focus on CI/CD as a good practice later on, once we have covered those chapters.
+## Chapter 07: Monitoring and Logging
+This chapter is about monitoring and logging. The chapter starts by making a pretty big argument for automation (and hating on CTOs and founders, for some reason...). 
+Quote: *"The most significant impact you can have in a company is to set up continuous integration and continuous delivery. [...].Loggong follows close behind automation in importance"*
+
+The first part of the chapter can be summarized as follows: 
+- *"Given a system, you should always know how is it monitored and how is it logging."*
+A few monitoring and logging tools are introduced. `prometheus` is demonstrated in an example.
+
+
+# TODO:
+- create `prometheus_client` example. See:
+  - Book's example for prometheus_client
+  - Prometheus' simple example [here](https://github.com/prometheus/client_python)
+
+- Check out `python-statsd` for *instrumentation*... 
+
+- Containerizar la app en el próximo capítulo. (crear mi capítulo ad-hoc).
+  Con la app en un container, va a ser más fácil aplicar todo esto.
