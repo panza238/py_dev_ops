@@ -243,13 +243,27 @@ The first part of the chapter can be summarized as follows:
 - *"Given a system, you should always know how is it monitored and how is it logging."*
 A few monitoring and logging tools are introduced. `prometheus` is demonstrated in an example.
 
+### Prometheus
+Prometheus is a monitoring tool. Prometheus is a database that stores an application's metrics. For example: the number of requests, how long the requests take, the number of errors, the number of users, etc.
+In Python, we can use the `prometheus_client` library to interact with Prometheus. Through the client we can define the metrcis we want to track, and then send them to Prometheus. Prometheus will run in it's own server and will process the metrics (for example, it will send the metrics over to another database for storage, or to a data visualization tool).
+
+Also, a nice-to-have feature that Prometheus offers is its built in alert system. Alertmanager is a tool to send alerts when some metric goes out of bounds.
+
+I have created a simple example of how to use the `prometheus_client` library, taken directly from the [documentation](https://github.com/prometheus/client_python). For now this is enough. When we start using containerization technology (i.e. Docker), we will dig a bit deeper into Prometheus and use the tool to log metrics for our app.
+
+Our example creates a dummy request processor, and only uses the `Summary` metric to log information abour processed requests. The example launches a Prometheus server on port 8000 to visualize (rather poorly) the metrics.
+
+To run it, simply run `poetry run python misc/prom_test.py`. You will be able to see the metrics in `localhost:8000` through your browser.
+
+### StatsD & Graphite
+The books mentions `statsd` and `graphite` as alternatives to Prometheus. I have not used either of them.
+
+### Logging
+
 
 # TODO:
-- create `prometheus_client` example. See:
-  - Book's example for prometheus_client
-  - Prometheus' simple example [here](https://github.com/prometheus/client_python)
 
-- Check out `python-statsd` for *instrumentation*... 
+- Logging
 
 - Containerizar la app en el próximo capítulo. (crear mi capítulo ad-hoc).
   Con la app en un container, va a ser más fácil aplicar todo esto.
