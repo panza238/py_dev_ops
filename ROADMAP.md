@@ -259,11 +259,11 @@ To run it, simply run `poetry run python misc/prom_test.py`. You will be able to
 The books mentions `statsd` and `graphite` as alternatives to Prometheus. I have not used either of them.
 
 ### Logging
+Python's logging module is a very powerful and useful tool. [Here's](https://realpython.com/python-logging/) a great Real Python post that goes over it.
+I have added a simple example `log_example.py` to the `misc` directory as a sandbox to play with the tool. However I strongly recommend going through the Real Python post mentioned above.
 
 
 # TODO:
-
-- Logging
 
 - Containerizar la app en el próximo capítulo. (crear mi capítulo ad-hoc).
   Con la app en un container, va a ser más fácil aplicar todo esto.
