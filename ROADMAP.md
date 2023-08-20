@@ -260,10 +260,13 @@ The books mentions `statsd` and `graphite` as alternatives to Prometheus. I have
 
 ### Logging
 Python's logging module is a very powerful and useful tool. [Here's](https://realpython.com/python-logging/) a great Real Python post that goes over it.
-I have added a simple example `log_example.py` to the `misc` directory as a sandbox to play with the tool. However I strongly recommend going through the Real Python post mentioned above.
+I have added a simple example `log_example.py` to the `misc` directory as a sandbox to play with the tool. However I strongly recommend going through the Real Python post mentioned above. Even in this post, there are many features that are not covered. Python's logging module is as complex as it is powerful.
+
+In the `world-timer` app, logging is now handled by the `logging` module. So the parts of the code that wrote information to a file through the `write` method were removed. 
+I decided to go with the `TimedRotatingFileHandler` instead of the `FileHandler`. This class gives us the ability to rotate the log file periodically. In this case, the rotation is done every day. Every separate log file is named with the date as a suffix. The suffixes are added to the files being rotated, so the first file (that is not rotated) won't have any suffix. A simple detail that bugs me a little bit is that one can't customize the name of the log file (So it won't be as pretty, but it will be just as useful).
+
+I decided to go with this approach because it illustrates better a production situation where the app is running 24/7, and the logs need to be identified by date.
 
 
-# TODO:
-
-- Containerizar la app en el próximo capítulo. (crear mi capítulo ad-hoc).
-  Con la app en un container, va a ser más fácil aplicar todo esto.
+## Chapter X - Containerization
+Since everything in this book is a lot easier to show in a running app, and to simulate running an app we need different components working together, I decided to move the containerization chapter to now. So we will explore this technology next.
