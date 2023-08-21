@@ -234,7 +234,44 @@ With `poetry.lock` and `dist/*.tar.gz` the real power of make is shown. make wil
 ### Cloud Computing
 - AWS Code Pipeline for deploy? Or GCP Cloud Build?
 
-  
 
-OK... so... apart from the Makefile, there is not really much to do... There are a few stories and walkthroughs, but nothing to actually do. The chapter goes through tools that will be covered in later chapters (Cloud computing, orchestration, containers, etc.). 
-For now, we will move forward, and focus on CI/CD as a good practice later on, once we have covered those chapters.
+## Chapter 07: Monitoring and Logging
+This chapter is about monitoring and logging. The chapter starts by making a pretty big argument for automation (and hating on CTOs and founders, for some reason...). 
+Quote: *"The most significant impact you can have in a company is to set up continuous integration and continuous delivery. [...].Loggong follows close behind automation in importance"*
+
+The first part of the chapter can be summarized as follows: 
+- *"Given a system, you should always know how is it monitored and how is it logging."*
+A few monitoring and logging tools are introduced. `prometheus` is demonstrated in an example.
+
+### Prometheus
+Prometheus is a monitoring tool. Prometheus is a database that stores an application's metrics. For example: the number of requests, how long the requests take, the number of errors, the number of users, etc.
+In Python, we can use the `prometheus_client` library to interact with Prometheus. Through the client we can define the metrcis we want to track, and then send them to Prometheus. Prometheus will run in it's own server and will process the metrics (for example, it will send the metrics over to another database for storage, or to a data visualization tool).
+
+Also, a nice-to-have feature that Prometheus offers is its built in alert system. Alertmanager is a tool to send alerts when some metric goes out of bounds.
+
+I have created a simple example of how to use the `prometheus_client` library, taken directly from the [documentation](https://github.com/prometheus/client_python). For now this is enough. When we start using containerization technology (i.e. Docker), we will dig a bit deeper into Prometheus and use the tool to log metrics for our app.
+
+Our example creates a dummy request processor, and only uses the `Summary` metric to log information abour processed requests. The example launches a Prometheus server on port 8000 to visualize (rather poorly) the metrics.
+
+To run it, simply run `poetry run python misc/prom_test.py`. You will be able to see the metrics in `localhost:8000` through your browser.
+
+### StatsD & Graphite
+The books mentions `statsd` and `graphite` as alternatives to Prometheus. I have not used either of them.
+
+### Logging
+Python's logging module is a very powerful and useful tool. [Here's](https://realpython.com/python-logging/) a great Real Python post that goes over it.
+I have added a simple example `log_example.py` to the `misc` directory as a sandbox to play with the tool. However I strongly recommend going through the Real Python post mentioned above. Even in this post, there are many features that are not covered. Python's logging module is as complex as it is powerful.
+
+In the `world-timer` app, logging is now handled by the `logging` module. So the parts of the code that wrote information to a file through the `write` method were removed. 
+I decided to go with the `TimedRotatingFileHandler` instead of the `FileHandler`. This class gives us the ability to rotate the log file periodically. In this case, the rotation is done every day. Every separate log file is named with the date as a suffix. The suffixes are added to the files being rotated, so the first file (that is not rotated) won't have any suffix. A simple detail that bugs me a little bit is that one can't customize the name of the log file (So it won't be as pretty, but it will be just as useful).
+
+I decided to go with this approach because it illustrates better a production situation where the app is running 24/7, and the logs need to be identified by date.
+
+### ELK Stack
+The book glosses over ELK Stack: Elasticsearch, Logstash & Kibana.
+There is not much to comment on this section.
+
+
+## Chapter X - Containerization
+Since everything in this book is a lot easier to show in a running app, and to simulate running an app we need different components working together, I decided to move the containerization chapter to now. So we will explore this technology next.
+

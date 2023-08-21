@@ -1,5 +1,14 @@
 # Changelog
 
+## Version [0.3.1]
+### Changed
+- Logs are now managed through Python's `logging` module.
+### Added
+- Comments to `main.py` to improve readability.
+### Removed
+- `wt_argparse.py` & `wt_fire.py` as they were no longer needed
+
+
 ## Version [0.3.0]
 ### Added
 - `setup.py` file to help with project packaging.

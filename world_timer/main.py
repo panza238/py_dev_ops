@@ -5,17 +5,45 @@ import click
 import requests
 import datetime
 import os
+import logging
+from logging.handlers import TimedRotatingFileHandler
 
 
+# CONSTANTS
 BASE_API_URL = "http://worldtimeapi.org/api/"
 BASE_WT_LOGS_PATH = os.environ.get("BASE_WT_LOGS_PATH", ".")
+LOG_LEVEL = os.environ.get("LOG_LEVEL", logging.INFO)
 
+
+# LOGGING CONFIGURATION
+logging_extra = {"app_name": "world-timer"}
+
+# Create logger
+logger = logging.getLogger(name=__name__)
+logger.setLevel(LOG_LEVEL)
+# Create handler & formatter for logger
+file_handler = TimedRotatingFileHandler(
+    BASE_WT_LOGS_PATH + f"/world-timer.log",
+    when='D', interval=1)
+file_format = logging.Formatter(fmt='%(asctime)s - %(app_name)s - %(levelname)s - %(message)s',
+                                datefmt='%d/%m/%Y %H:%M:%S')
+
+file_handler.setLevel(LOG_LEVEL)
+file_handler.setFormatter(file_format)
+logger.addHandler(file_handler)
+
+
+# WORLD_TIMER CODE
 
 def list_cities_time(cities_list):
     """list provided cities"""
     base_url = BASE_API_URL + "timezone/"
 
     response_list = [requests.get(base_url + city).json() for city in cities_list]
+    for response in response_list:
+        if 'error' in response:
+            logger.error(f"Error: {response['error']}", extra=logging_extra)
+
     return response_list
 
 
@@ -29,19 +57,26 @@ def list_current_location_time():
 
 def print_location_time(response):
     """print location time"""
-    click.echo(click.style(f"{response['timezone'].split('/')[-1]}: {response['datetime']}",
+    try:
+        click.echo(click.style(f"{response['timezone'].split('/')[-1]}: {response['datetime']}",
                            fg="green"))
+    except KeyError:
+        click.echo(click.style(f"Error: {response['error']}", fg="red"))
 
 
 def world_timer(cities, quiet=False):
     """CLI tool to list the current time in different cities"""
 
+    logger.info(f"Starting World Timer", extra=logging_extra)
+
     # if no cities provided, use current location
     if not cities:
         click.echo("No cities provided. Using current location")
         responses = list_current_location_time()
+        logger.info(f"No cities provided. Using current location\n", extra=logging_extra)
     else:
         responses = list_cities_time(cities_list=cities)
+        logger.info(f"Consulted Cities: {cities}\n", extra=logging_extra)
 
     # If quiet, suppress output to console.
     if quiet:
@@ -50,16 +85,8 @@ def world_timer(cities, quiet=False):
         for response in responses:
             print_location_time(response)
 
-            
-    # Log consulted cities
-    today = datetime.datetime.today().date().isoformat()
-    with open(f"{BASE_WT_LOGS_PATH}/log_file_{today}.log", "a") as log_file:
-        now = datetime.datetime.now().isoformat()
-        if not cities:
-            log_file.write(f"[{now}] No cities provided. Using current location\n")
-        else:
-            log_file.write(f"[{now}] Consulted Cities: {cities}\n")
 
+# WORLD TIMER COMMAND
 
 @click.command()
 @click.option('--cities', '-c', multiple=True,

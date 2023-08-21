@@ -5,7 +5,7 @@ This file holds all the information that setuptools need mae a package out of th
 from setuptools import setup, find_packages
 setup(
 name="world-timer",
-version="0.1.0",
+version="0.3.1",
 author="Ezequiel Panzarasa",
 author_email="ezequiel.panzarasa@gmail.com",
 url="https://github.com/panza238/py_dev_ops",
