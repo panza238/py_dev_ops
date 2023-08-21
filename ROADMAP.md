@@ -267,6 +267,11 @@ I decided to go with the `TimedRotatingFileHandler` instead of the `FileHandler`
 
 I decided to go with this approach because it illustrates better a production situation where the app is running 24/7, and the logs need to be identified by date.
 
+### ELK Stack
+The book glosses over ELK Stack: Elasticsearch, Logstash & Kibana.
+There is not much to comment on this section.
+
 
 ## Chapter X - Containerization
 Since everything in this book is a lot easier to show in a running app, and to simulate running an app we need different components working together, I decided to move the containerization chapter to now. So we will explore this technology next.
+
