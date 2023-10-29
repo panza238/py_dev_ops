@@ -275,3 +275,12 @@ There is not much to comment on this section.
 ## Chapter X - Containerization
 Since everything in this book is a lot easier to show in a running app, and to simulate running an app we need different components working together, I decided to move the containerization chapter to now. So we will explore this technology next.
 
+I took a few-hundred-pages detour into Sean P. Kane's book: "Docker Up & Running". It is well worth the trouble. I highly recommend reading at least chapters 1, 4 and 5 to get started with Docker.<br>
+In my opinion, Docker should be introduced a lot earlier in the book, since it is a core DevOps tool, and it is very useful to run small, lightweight POCs. Inside containers one can run different apps and services to interact with.<br>
+Many concepts can be tested out and displayed through containers.
+
+As part of the detour, I'll reformat an containerize the app. Later on, I'll add more complexity containerization procees by running multiple containers with Docker Compose.
+
+## Chapter 08 - Testing
+This chapter is about testing. In this chapter I will pay back some debts I left along the way for when the world timer app was containerized.
+I'll go through the CI/CD process again, trying to replicate what this process would look like in a real world scenario.
