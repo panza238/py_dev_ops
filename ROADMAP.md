@@ -284,3 +284,6 @@ As part of the detour, I'll reformat an containerize the app. Later on, I'll add
 ## Chapter 08 - Testing
 This chapter is about testing. In this chapter I will pay back some debts I left along the way for when the world timer app was containerized.
 I'll go through the CI/CD process again, trying to replicate what this process would look like in a real world scenario.
+
+
+## TODO: App refactoring
